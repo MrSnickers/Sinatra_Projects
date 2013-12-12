@@ -1,0 +1,23 @@
+<ul>
+  <li>
+    <h2>Simple Partial</h2>
+    <%= simple_partial :_nav %>
+  </li>
+  <li>
+    <h2>Intermediate Partial</h2>
+    <section class="row-fluid">
+      <%= intermediate_partial :mouse, "cheeseman" %>
+      <%= intermediate_partial :mouse, {:mouse=>"cheeseman"} %>
+    </section>
+  </li>
+   <li>
+    <h2>Advanced Partial</h2>
+    <section class="row-fluid">
+      <h3>With a Single Object</h3>
+      <%= adv_partial @cats.first %>
+    </section>
+    <section>
+      <h3>With a Collection of Objects</h3>
+      <%= adv_partial @cats %>
+    </section>
+  </li>

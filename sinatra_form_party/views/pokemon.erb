@@ -1,0 +1,61 @@
+<h1>Pokemon Registration</h1>
+<form action="/pokemon" method="POST">
+
+  <h2>Pokemon Trainer</h2>
+
+  <label for="trainer_name">Name:</label>
+  <input id="trainer_name" type="name" name="name">
+
+  <h2>Pokemon Team</h2>
+
+  <label for="Team_member1_name">Name:</label>
+  <input id="Team_member1_name" type="text" name="team[0][name]">
+
+  <label for="Team_member1_type">Type:</label>
+  <select id="Team_member1_type" type = "select" name="team[0][type]">
+    <option value="normal" selected>Normal</option>
+    <option value="bug" >Bug</option>
+    <option value="electricity">Electricity</option>
+    <option value="fire">Fire</option>
+    <option value="ghost">Ghost</option>
+    <option value="grass">Grass</option>
+  </select>
+
+  <br></br>
+
+  <label for="Team_member2_name">Name:</label>
+  <input id="Team_member2_name" type="text" name="team[1][name]">
+
+  <label for="Team_member2_type">Type:</label>
+  <select id="Team_member2_type" type = "select" name="team[1][type]">
+    <option value="normal" selected>Normal</option>
+    <option value="bug">Bug</option>
+    <option value="electricity">Electricity</option>
+    <option value="fire">Fire</option>
+    <option value="ghost">Ghost</option>
+    <option value="grass">Grass</option>
+  </select>
+  <br></br>
+
+  <label for="Team_member3_name">Name:</label>
+  <input id="Team_member3_name" type="text" name="team[2][name]">
+
+  <label for="Team_member3_type">Type:</label>
+    <select id="Team_member3_type" type = "select" name="team[1][type]">
+    <option value="normal" selected>Normal</option>
+    <option value="bug">Bug</option>
+    <option value="electricity">Electricity</option>
+    <option value="fire">Fire</option>
+    <option value="ghost">Ghost</option>
+    <option value="grass">Grass</option>
+  </select>
+
+  <h2>Badges</h2>
+
+  <input type="checkbox" name="badges[]" value="water">I have a water badge<br>
+  <input type="checkbox" name="badges[]" value="electricity">I have an electricity badge</br> 
+
+  <br><br/>
+
+  <button type="submit" value="Submit">Submit</button>
+</form>

@@ -1,0 +1,11 @@
+<h1>THE DATA</h1>
+
+
+<div>
+<% @data.each do |station| %>
+
+<%="#{station["name"]}      :"%> <%=" #{station["lat"].to_s}  ," %><%= station["lng"].to_s %><br></br>
+
+<%end%>
+
+</div>

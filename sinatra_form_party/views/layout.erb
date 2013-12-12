@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Party</title>
+  </head>
+  <body>
+    <%= yield %>
+    <% if params.count > 2 %>
+      <a href="/"> << Back to Form Party </a>
+    <% end %>
+  </body>
+</html>
