@@ -3,16 +3,21 @@
 
 <div>
   <br />
-<% @quiz.questions.each do |item| %>
-<%= item[:name] %>
-  <br />
-  <select id="choice" name="guess">
-    <option value="1">Super-Villain</option>
-    <option value="2">Punctuation</option>
-  </select>
-</div>
-  <br />
+
+
+<% @quiz.questions.each_with_index do |item, index| %>
+ <%= item[:name] %>
+   <br />
+   <select id= <%= "choice#{index.to_s}" %> name= <%= "guess#{index.to_s}"%>>
+     <option value=<%=item[:type] == "Villain"? 1 : 0 %>> Super-Villain</option>
+     <option value=<%=item[:type] == "Punctuation"? 1 : 0 %>> Punctuation</option>
+   </select>
+ </div>
+   <br />
 <% end %>
+
+
   <button type="submit" value="Respond">Guess</button>
 
 </form>
+

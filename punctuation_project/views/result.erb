@@ -1,1 +1,10 @@
-<h1><%= @quiz.inspect %></h1>
+
+<%= params.inspect %>
+
+<h1>You scored</h1>
+<% total = 0%>
+<% params.values.each do |item| %>
+  <%total = total + item.to_i %>
+  <% end %>
+
+  <h1><%= total%> points!</h1>

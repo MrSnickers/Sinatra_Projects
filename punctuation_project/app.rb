@@ -30,3 +30,7 @@ class Quizgame < Sinatra::Application
 
 
 end
+
+
+  
+# 

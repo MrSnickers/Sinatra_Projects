@@ -11,8 +11,8 @@ attr_accessor :questions
 
 
   def initialize
-  @questions = [{:name => "Electro", :type => "Villain"}, {:name =>"Octothorpe", :type => "Punctuation"}]
-    # More punctuation, "Chevron", "Caret", "Solidus", "Guillements", "Interrobang", "Hedera", "Pilcrow"]
+  @questions = [{:name => "Electro", :type => "Villain"}, {:name =>"Octothorpe", :type => "Punctuation"}, {:name =>"Hedera", :type => "Punctuation"}]
+    # More punctuation, "Chevron", "Caret", "Solidus", "Guillements", "Interrobang", "Pilcrow"]
   end
 
   def tally
@@ -34,3 +34,4 @@ attr_accessor :questions
   end
 
 end
+
