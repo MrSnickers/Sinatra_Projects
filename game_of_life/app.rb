@@ -16,6 +16,8 @@ module Name
     get '/game' do
       @local_game = @@game
       @local_game.randomize_live_cells(100)
+      @blue = "background-color: blue"
+      @black = "background-color: black"
       @local_game.tick
       erb :game
     end

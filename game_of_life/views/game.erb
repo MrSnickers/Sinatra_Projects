@@ -1,12 +1,12 @@
 <h1>GAME!!</h1>
 
 
-    <% width_counter = 0%>
-    <% height_counter = 0%>
-    <% red_color = 255%>
-    <% green_color = 255%>
-    <% blue_color = 0%>
-    <% @local_game.board[0].each do |cell| %>
-    <%= cell %>
-    <% end %>
-
+<div id="container">
+  <% #Oliver's excellent pixel solution %>
+<%@local_game.board.each do |x|%>
+        <div class="break"><br></div>
+        <%x.each do |cell|%>
+                <div class="cell" style="<%=cell.alive ? @blue : @black %>"></div>
+        <%end%>
+<%end%>
+</div>
