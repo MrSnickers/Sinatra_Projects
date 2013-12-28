@@ -1,0 +1,16 @@
+<h1>GAME!!</h1>
+<header>
+      <meta http-equiv="refresh" content="0.8" >
+</header>
+
+
+<div id="board_container">
+  <% while @row_counter < @local_game.width %>
+  <div id="row_container">
+    <%@local_game.board[@row_counter].each do |cell|%>
+       <div class="cell" style="<%=cell.alive ? @alive : @black %>"></div>
+    <%end%>
+  </div>
+  <%@row_counter += 1%>
+  <%end%>
+</div>

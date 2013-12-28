@@ -1,0 +1,14 @@
+# Logfile created on 2013-12-27 17:36:25 -0500 by logger.rb/36483
+I, [2013-12-27T17:36:25.692015 #1889]  INFO -- : 0:  bond (0.4.3) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/bond-0.4.3.gemspec
+I, [2013-12-27T17:36:25.692367 #1889]  INFO -- : 0:  rack (1.5.2) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/rack-1.5.2.gemspec
+I, [2013-12-27T17:36:25.692694 #1889]  INFO -- : 0:  rack-protection (1.5.1) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/rack-protection-1.5.1.gemspec
+I, [2013-12-27T17:36:25.692994 #1889]  INFO -- : 0:  rack-test (0.6.2) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/rack-test-0.6.2.gemspec
+I, [2013-12-27T17:36:25.693290 #1889]  INFO -- : 0:  rainbow (1.99.0) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/rainbow-1.99.0.gemspec
+I, [2013-12-27T17:36:25.693581 #1889]  INFO -- : 0:  ripl (0.7.0) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/ripl-0.7.0.gemspec
+I, [2013-12-27T17:36:25.693877 #1889]  INFO -- : 0:  ripl-multi_line (0.3.1) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/ripl-multi_line-0.3.1.gemspec
+I, [2013-12-27T17:36:25.694168 #1889]  INFO -- : 0:  ripl-rack (0.2.0) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/ripl-rack-0.2.0.gemspec
+I, [2013-12-27T17:36:25.694453 #1889]  INFO -- : 0:  shotgun (0.9) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/shotgun-0.9.gemspec
+I, [2013-12-27T17:36:25.694744 #1889]  INFO -- : 0:  tilt (1.4.1) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/tilt-1.4.1.gemspec
+I, [2013-12-27T17:36:25.695033 #1889]  INFO -- : 0:  sinatra (1.4.4) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/sinatra-1.4.4.gemspec
+I, [2013-12-27T17:36:25.695311 #1889]  INFO -- : 0:  tux (0.3.0) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/tux-0.3.0.gemspec
+I, [2013-12-27T17:36:25.695585 #1889]  INFO -- : 0:  bundler (1.5.0) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p247/specifications/bundler-1.5.0.gemspec
