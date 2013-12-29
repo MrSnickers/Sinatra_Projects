@@ -2,12 +2,14 @@
 
 class Game
 
-attr_reader  :width, :height, :board
+attr_reader  :width, :height, :board, :tick_count
+attr_accessor :pause
 
   def initialize(w,h)
   @width = w
   @height = h
   @board = Array.new(width) {Array.new(height)}
+  @tick_count = 0
   @pause = false
 
   width_counter = 0
@@ -76,6 +78,7 @@ end
       height_counter = 0
       width_counter +=1
     end
+    @tick_count += 1
   end
 
   def print_board

@@ -1,12 +1,12 @@
-<h1>GAME!!</h1>
-<header>
-      <meta http-equiv="refresh" content="0.8" >
-</header>
+<h1>Generation <%= @local_game.tick_count %></h1>
+<head>
+      <meta  <%= "http-equiv='refresh' content='0.8'" unless @local_game.pause %> >
+</head>
 
 
 <div id="board_container">
   <% while @row_counter < @local_game.width %>
-  <div id="row_container">
+  <div id="row_container" style="width: 100%">
     <%@local_game.board[@row_counter].each do |cell|%>
        <div class="cell" style="<%=cell.alive ? @alive : @black %>"></div>
     <%end%>
