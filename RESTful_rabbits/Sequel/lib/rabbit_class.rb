@@ -1,12 +1,5 @@
-class Rabbit
+class Rabbit < Sequel::Model
 
-  include DataMapper::Resource 
-  property :id,           Serial
-  property :name,         String, :required => true
-  property :description,  Text
-  property :age,          Integer
-  property :colour,       String
-  property :created_at,   DateTime
-  property :updated_at,   DateTime
+  plugin :timestamps
   
 end

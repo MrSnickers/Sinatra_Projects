@@ -6,7 +6,7 @@ require './lib/rabbit_class.rb'
 
 class RabbitApp < Sinatra::Application
 
-set :database, "sqlite3:///rabbits.db"
+  DB = Sequel.connect('sqlite://rabbits.db')
 
   get '/' do
     "Why, hello there!"
@@ -38,13 +38,13 @@ set :database, "sqlite3:///rabbits.db"
 
   # edit rabbit
   get '/rabbits/edit/:id' do
-    @rabbit = Rabbit.get(params[:id])
+    @rabbit = Rabbit.(id: params[:id])
     erb :edit
   end
 
     # update rabbit
   put '/rabbits/:id' do
-    @rabbit = Rabbit.get(params[:id])
+    @rabbit = Rabbit.(:id params[:id])
     if @rabbit.update(params[:rabbit])
       status 201
       redirect '/rabbits/' + params[:id]
@@ -56,22 +56,21 @@ set :database, "sqlite3:///rabbits.db"
 
 # delete rabbit confirmation
 get '/rabbits/delete/:id' do
-  @rabbit = Rabbit.get(params[:id])
+  @rabbit = Rabbit.(:id params[:id])
   erb :delete
 end
 
 # delete rabbit
 delete '/rabbits/:id' do
-  Rabbit.get(params[:id]).destroy
+  Rabbit.(:id params[:id]).destroy
   redirect '/rabbits'  
 end
 
 # show rabbit
 get '/rabbits/:id' do
-  @rabbit = Rabbit.get(params[:id])
+  @rabbit = Rabbit.(:id params[:id])
   erb :show
 end
 
-DataMapper.auto_upgrade!
 
 end
