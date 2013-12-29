@@ -1,0 +1,4 @@
+###Rakefile
+
+require "./rabbit_app.rb"
+require "sinatra/activerecord/rake"

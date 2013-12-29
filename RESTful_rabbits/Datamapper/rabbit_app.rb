@@ -3,10 +3,9 @@ Bundler.require
 
 require './lib/rabbit_class.rb'
 
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/rabbits.db")
 
 class RabbitApp < Sinatra::Application
-
-set :database, "sqlite3:///rabbits.db"
 
   get '/' do
     "Why, hello there!"
