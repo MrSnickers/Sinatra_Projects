@@ -1,0 +1,19 @@
+<h3>Rabbits!</h3>
+
+<a href="/rabbits/new">Create a new rabbit</a>
+
+<% if @rabbits.empty? %>
+
+<p><%= "No rabbits yet!" %></p>
+
+<% else %>
+
+  <ul> #rabbits
+  <% @rabbits.each do |rabbit| %>
+    <li>{:id => "rabbit-#{rabbit.id}"} </li>
+      <a href="/rabbits/#{rabbit.id}"> <%= rabbit.name %>
+      <a(href="/rabbits/edit/#{rabbit.id}"> EDIT </a>
+      <a(href="/rabbits/delete/#{rabbit.id}"> DELETE </a>
+      <% end %>
+  </ul>
+  <% end %>

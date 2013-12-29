@@ -1,0 +1,26 @@
+<h1> Edit a Rabbit </h1>
+
+<form action="/rabbits/"<%="#{@rabbit.id}"%> method="POST" >
+  <fieldset>
+    <legend> Update this rabbit </legend>
+
+      <label for="name"> Name: </label>
+      <input id="name" type="text" name="rabbit[name]" value= <% "#{@rabbit.name}"%>>
+
+      <label for="color"> Color: </label>
+      <select id="color" type="select" name="rabbit[color]">
+      <% ["black", "white", "grey", "brown"].each do |color| %>
+        <option value = <%color%> selected = <%= if color == @rabbit.color? "true": "false" %>><%= color %></option>
+      <%end%>
+    
+      <label for="description"> Description: </label>
+      <input id="description" type= "text" name="rabbit[description]" value = <%= @rabbit.description%>>
+
+      <label for="age"> Age: </age>
+      <input id="age" type="text" name="rabbit[age]" value=<%="#{@rabbit.age}"%>)
+
+
+  </fieldset>
+  <input type="submit" value="Create"> or <a href='/rabbits'>cancel</a>
+</form>
+  

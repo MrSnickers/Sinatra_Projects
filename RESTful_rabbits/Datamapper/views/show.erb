@@ -1,0 +1,13 @@
+#show
+<h3> <%= @rabbit.name %>
+<p> <%= "Colour: #{@rabbit.colour}" %>
+<p> <%= "Age: #{@rabbit.age}" %>
+<p> <%= "Description: #{@rabbit.description}" %>
+<p> <%= "Created at: #{@rabbit.created_at}" %>
+<p> <%= "Last updated at: #{@rabbit.updated_at}" %>
+<p> <%= "Description: #{@rabbit.description}" %>
+
+<a href="/rabbits/edit/<%= @rabbit.id %>")EDIT </a>
+<a href="/rabbits/delete/<%= @rabbit.id %>")DELETE </a>
+
+<a href='/rabbits'> Back to index </a>
