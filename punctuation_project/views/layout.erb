@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>Quiz!</title>
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <%= yield %>
-    <% if params.count > 2 %>
-      <a href="/quiz"> << Take the Quiz! </a>
-    <% end %>
   </body>
 </html>

@@ -1,12 +1,13 @@
-<h1>Quiz</h1>
+<h1>Punctuation</h1>
+<h2>or Supervillain?</h2>
 <form action="/result" method="POST">
 
+<div class="form_container">
 <% @quiz.questions.each_with_index do |item, index| %>
- <%= item[:name] %>
    <br />
-   <select id= <%= "choice#{index.to_s}" %> name= <%= "guess#{index.to_s}"%>>
-     <option value=<%=item[:type] == "Villain"? 1 : 0 %>> Super-Villain</option>
-     <option value=<%=item[:type] == "Punctuation"? 1 : 0 %>> Punctuation</option>
+   <label for=<%= "choice#{index.to_s}" %>> <%= item[:name] %></label>
+   <input class="option" type="radio" id=<%= "choice#{index.to_s}" %> name= <%= "guess#{index.to_s}"%> value=<%=item[:type] == "Villain"? 1 : 0 %>> Villain</input>
+    <input class="option" type="radio" id=<%= "choice#{index.to_s}" %> name= <%= "guess#{index.to_s}"%> value=<%=item[:type] == "Punctuation"? 1 : 0 %>> Punctuation</input>
    </select>
    <br />
 <% end %>
@@ -15,4 +16,5 @@
   <button type="submit" value="Respond">Guess</button>
 
 </form>
+</div>
 

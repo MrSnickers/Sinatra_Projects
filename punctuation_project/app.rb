@@ -10,13 +10,7 @@ class Quizgame < Sinatra::Application
   end
 
 
-
   get '/' do
-    "Welcome to the quiz"
-    erb :index
-  end
-
-  get '/quiz' do
 
   erb :quiz
   end

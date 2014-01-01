@@ -41,5 +41,5 @@ PLATFORMS
 DEPENDENCIES
   debugger
   shotgun
-  sinatra
+  sinatra (= 1.4.4)
   tux
