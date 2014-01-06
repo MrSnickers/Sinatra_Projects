@@ -1,7 +1,8 @@
 !!!
 %head
   %link{:href=>"/style.css", :type=>"text/css", :rel=>"stylesheet"}
-    %title Mouse Racer
+  %meta{:http=>{:equiv=>'refresh'}, :content=>'0.4'} -unless @board.solved
+  %title Mouse Racer
 
   %body
     = yield

@@ -6,7 +6,7 @@ class Board
 
 ### Assumes wall_value does not equal "o" or "x." That there is only one open space for an entrance and an exit. That entrance and exit are on left and right hand sides.
 
-attr_reader :maze, :path_value, :open_value, :mouse_face, :visited_value
+attr_reader :maze, :path_value, :open_value, :mouse_face, :visited_value, :mouse_tile_status, :solved
 attr_accessor :leading_x, :leading_y
 
   def initialize
@@ -28,7 +28,7 @@ attr_accessor :leading_x, :leading_y
       array[index] = string.chop!.split("")
       self.maze << array[index]
     end
-    self.maze = maze.transpose
+    @maze = maze.transpose
   end
 
   def set_open(open_value)
@@ -94,11 +94,10 @@ attr_accessor :leading_x, :leading_y
         end
         @leading_x = coordinate_array[0]
         @leading_y = coordinate_array[1]
-        @maze[leading_x][leading_y] = @mouse_face
         return
       end
     end
-    valid_positions.shuffle.each do |coordinate_array|
+    valid_positions.each do |coordinate_array|
         if maze[coordinate_array[0]][coordinate_array[1]] == path_value
       @maze[leading_x][leading_y] = visited_value
       @leading_x = coordinate_array[0]
@@ -109,12 +108,12 @@ attr_accessor :leading_x, :leading_y
   end
 
   def show_mouse
-    board.mouse_tile_status = self.maze[leading_x][leading_y]
+    @mouse_tile_status = self.maze[leading_x][leading_y]
     self.maze[leading_x][leading_y] = mouse_face
   end
 
   def put_tile_back
-    self.maze[leading_x][leading_y] = board.mouse_tile_status
+    self.maze[leading_x][leading_y] = @mouse_tile_status
   end
 
 end

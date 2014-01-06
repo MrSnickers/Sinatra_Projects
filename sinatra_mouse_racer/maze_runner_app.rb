@@ -32,6 +32,20 @@ module App
     haml :maze
     end
 
+    get '/run' do
+    session[:board].put_tile_back
+    session[:board].move_to_first_open_position
+    session[:board].show_mouse
+    @board = session[:board]
+    @maze = session[:board].maze
+    @open = session[:board].open_value
+    @mouse = session[:board].mouse_face
+    @visited = session[:board].visited_value
+    @path = session[:board].path_value
+
+    haml :maze
+    end
+
    end
  end
 

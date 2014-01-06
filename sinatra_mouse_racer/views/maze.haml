@@ -1,19 +1,20 @@
-%body
-  %h1 MAZE RUNNER
-  .board_container
-    -@row_counter = 0
-    - while @row_counter < @maze.length
-      .row_container
-      -@maze[@row_counter].each do |square|
-        - case
-          -when square == @open
-            .open
-          -when square == @path
-            .path
-          -when square == @visited
-            .visited
-          -else
-            .wall
+%h1 MAZE RUNNER
+.board_container
+  -@row_counter = 0
+  - while @row_counter < @maze.length
+    .row_container
+    -@maze[@row_counter].each do |square|
+      - case
+        -when square == @open
+          .open
+        -when square == @path
+          .path
+        -when square == @visited
+          .visited
+        -when square == @mouse
+          .mouse
+        -else
+          .wall
 
-            
-      -@row_counter += 1
+          
+    -@row_counter += 1
