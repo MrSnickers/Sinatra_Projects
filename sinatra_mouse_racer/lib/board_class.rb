@@ -4,23 +4,20 @@ require "rainbow"
 
 class Board
 
-  @@All_boards = []
+### Assumes wall_value does not equal "o" or "x." That there is only one open space for an entrance and an exit. That entrance and exit are on left and right hand sides.
 
-  ### Assumes wall_value does not equal "o" or "x." That there is only one open space for an entrance and an exit.That entrance and exit are on left and right hand sides.
-
-attr_reader :maze, :path_value, :open_value, :mouse_face, :visited_value, :final_path_length
+attr_reader :maze, :path_value, :open_value, :mouse_face, :visited_value
 attr_accessor :leading_x, :leading_y
 
   def initialize
     @maze = []
-    @path_value = "o"
-    @visited_value = "x"
-    @open_value
     @leading_x
     @leading_y
-    @solved = false
+    @open_value
+    @path_value = "o"
+    @visited_value = "x"
     @mouse_face = "\u1F42D" ## actual mouse is 1F42D heart is \u2764
-    @final_path_length
+    @solved = false
   end
 
   def create_maze(file)
@@ -28,9 +25,9 @@ attr_accessor :leading_x, :leading_y
     array = open_file.readlines
     array.each_with_index do |string, index|
       array[index] = string.chop!.split("")
-      @maze << array[index]
+      self.maze << array[index]
     end
-    @maze = maze.transpose
+    self.maze = maze.transpose
   end
 
   def set_open(open_value)
@@ -63,10 +60,6 @@ attr_accessor :leading_x, :leading_y
     end
   end
 
-  def reset_all_boards
-     @@All_boards = 0
-  end
-
 ###checks x and y coordinate pairs to ensure they do not run off the board.  Returns pairs in form [x_coordinate, y_coordinate]
   def validate(x_coordinate, y_coordinate)
     if x_coordinate >= 0 && x_coordinate < maze.length && y_coordinate >= 0 && y_coordinate < maze[0].length
@@ -79,14 +72,10 @@ attr_accessor :leading_x, :leading_y
 #####returns array of valid index pairs in the form of [x_coordinate, y_coordinate].  Currently preventing diagonal movement.
   def valid_positions
     valid_options = [
-                    #validate(leading_x-1, leading_y+1),
                      validate(leading_x, leading_y+1),
-                     #validate(leading_x+1, leading_y+1),
                      validate(leading_x-1, leading_y),
                      validate(leading_x+1, leading_y),
-                     #validate(leading_x-1, leading_y-1),
                      validate(leading_x, leading_y-1),
-                     #validate(leading_x+1, leading_y-1)
                    ]
 
     valid_options.compact

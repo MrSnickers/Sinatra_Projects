@@ -21,7 +21,9 @@ module App
     post'/run' do
     @board = session[:board]
     @maze = session[:board].maze
-    35.times {session[:board].move_to_first_open_position}
+    @open = session[:board].open_value
+    @visited = session[:board].visited_value
+    @path = session[:board].path_value
     haml :maze
     end
 
