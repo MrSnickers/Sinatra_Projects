@@ -16,9 +16,31 @@ h1 {
     display: inline-flex;
     margin: 1 auto;
 }
-.cell {
+.path {
     display: inline-block;
     margin: auto;
-    background-color: green;
+    width: 40px;
+    height: 40px;
+    background: green;
 }
-
+.visited {
+    display: inline-block;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    background: red;
+}
+.open {
+    display: inline-block;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    background: black;
+}
+.wall {
+    display: inline-block;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    background: blue;
+}

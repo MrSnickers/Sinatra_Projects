@@ -4,23 +4,32 @@ require 'bundler'
 Bundler.require
 
 require "./lib/board_class"
-# enable 'sessions'
+enable 'sessions'
 
 
 module App
   class Racer< Sinatra::Application
 
     get'/' do
-    "welcome"
-    end
-
-    get'/run' do
     session[:board] = Board.new
     session[:board].create_maze("./data/maze.rb")
-    @maze = session[:board].maze
+    session[:board].set_open(" ")
+    session[:board].set_left_start_point
+    haml :welcome
+    end
 
+    post'/run' do
+    @board = session[:board]
+    @maze = session[:board].maze
+    35.times {session[:board].move_to_first_open_position}
     haml :maze
     end
 
    end
  end
+
+
+# Take photo
+# convert photo to ASCII
+# carve maze by processing through array and swapping certain "closed" characters for "open" characters changes other "open" characters to "closed"
+# run mouse that recognizes "open" values

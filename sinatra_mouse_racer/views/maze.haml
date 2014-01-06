@@ -1,21 +1,19 @@
-!!!
-%head
-  %meta
-
-.board_container
-  -@row_counter = 0
-  - while @row_counter < @maze.length
-    .row_container
-    -@maze[@row_counter].each do |cell|
-      .cell{:style => "background-color: green;"}
-      / - case
-      /   -when cell == board.path_value
-      /     'green;"'
-      /   -when cell == board.visited_value
-      /     "red;"
-      /   -when cell == board.open_value
-      /     "white;"
-      /   -else
-      /     "black;"
-          
-    -@row_counter += 1
+%body
+  %h1 MAZE RUNNER
+  .board_container
+    -@row_counter = 0
+    - while @row_counter < @maze.length
+      .row_container
+      -@maze[@row_counter].each do |square|
+        - case
+          -when square == "o"
+            .path
+          -when square == "x"
+            .visited
+          -when square == " "
+            .open
+          -else
+            .wall
+            
+            
+      -@row_counter += 1
