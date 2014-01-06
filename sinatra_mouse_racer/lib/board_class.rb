@@ -17,6 +17,7 @@ attr_accessor :leading_x, :leading_y
     @path_value = "o"
     @visited_value = "x"
     @mouse_face = "\u1F42D" ## actual mouse is 1F42D heart is \u2764
+    @mouse_tile_status
     @solved = false
   end
 
@@ -32,6 +33,7 @@ attr_accessor :leading_x, :leading_y
 
   def set_open(open_value)
     @open_value = open_value
+    @mouse_tile_status = open_value
   end
 
 #### moves mouse to first open position on the left hand side
@@ -106,5 +108,18 @@ attr_accessor :leading_x, :leading_y
     end
   end
 
+  def show_mouse
+    board.mouse_tile_status = self.maze[leading_x][leading_y]
+    self.maze[leading_x][leading_y] = mouse_face
+  end
+
+  def put_tile_back
+    self.maze[leading_x][leading_y] = board.mouse_tile_status
+  end
 
 end
+
+
+
+
+

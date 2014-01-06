@@ -6,14 +6,14 @@
       .row_container
       -@maze[@row_counter].each do |square|
         - case
-          -when square == "o"
-            .path
-          -when square == "x"
-            .visited
-          -when square == " "
+          -when square == @open
             .open
+          -when square == @path
+            .path
+          -when square == @visited
+            .visited
           -else
             .wall
-            
+
             
       -@row_counter += 1
