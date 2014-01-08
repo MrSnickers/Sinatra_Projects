@@ -5,11 +5,12 @@ class Mouse
 ### Assumes wall_value does not equal "o" or "x." That there is only one open space for an entrance and an exit. That entrance and exit are on left and right hand sides.
 
 attr_reader :path_marker, :board
-attr_accessor :x_position, :y_position, :visited_path
+attr_accessor :x_position, :y_position, :visited_path, :personal_marker
 
   def initialize(board)
     @visited_path = []
     @backtrack_counter = -2
+    @personal_marker
     @x_position
     @y_position
     @board = board 

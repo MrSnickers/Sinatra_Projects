@@ -9,8 +9,8 @@ attr_reader :maze, :mice, :open_value
 
   def initialize
     @maze = []
-    @mice = []
     @open_value
+    @mice = []
   end
 
   def create_maze(file)
@@ -30,6 +30,7 @@ attr_reader :maze, :mice, :open_value
   def make_mice(number)
     number.times do
       mouse = Mouse.new(self)
+      mouse.personal_marker = number
       mice << mouse
     end
   end
