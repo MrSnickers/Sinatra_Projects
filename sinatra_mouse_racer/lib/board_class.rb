@@ -31,6 +31,7 @@ attr_reader :maze, :mice, :open_value
     number.times do
       mouse = Mouse.new(self)
       mouse.personal_marker = number
+      mouse.set_left_start_point
       mice << mouse
     end
   end

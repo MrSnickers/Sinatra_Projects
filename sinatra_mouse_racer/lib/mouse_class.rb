@@ -9,7 +9,6 @@ attr_accessor :x_position, :y_position, :visited_path, :personal_marker
 
   def initialize(board)
     @visited_path = []
-    @backtrack_counter = -2
     @personal_marker
     @x_position
     @y_position
@@ -56,16 +55,14 @@ attr_accessor :x_position, :y_position, :visited_path, :personal_marker
 #####returns array of valid index pairs in the form of [x_coordinate, y_coordinate].  Currently preventing diagonal movement.
   def valid_positions
     valid_options = [
-                     validate(x_position, y_position+1),
-                     validate(x_position-1, y_position),
-                     validate(x_position+1, y_position),
-                     validate(x_position, y_position-1),
+                      validate(x_position+1, y_position),
+                      validate(x_position, y_position-1),
+                      validate(x_position, y_position+1),
+                      validate(x_position-1, y_position)
                    ]
 
-    valid_options.compact
+    valid_options.compact.shuffle
   end
-
-###searches along the unshuffled valid position array is essentially a clockwise search.######this might be useful for keeping wall on right hand side
 
   def find_open_positions
     open_positions = []
@@ -82,8 +79,9 @@ attr_accessor :x_position, :y_position, :visited_path, :personal_marker
   def move_to_first_open_position
     if avoid_path[0]
       visited_path << [x_position, y_position]
-      x_coordinate = find_open_positions[0][0]
-      y_coordinate = find_open_positions[0][1]
+      board.maze[x_position][y_position] = personal_marker
+      @x_position = find_open_positions[0][0]
+      @y_position = find_open_positions[0][1]
     else
       backtrack
     end

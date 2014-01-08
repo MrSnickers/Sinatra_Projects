@@ -44,6 +44,16 @@ describe '#mouse_class' do
     expect(mouse1.find_open_positions.length).to eq(2)
   end
 
+  it "should move one space into an open position" do
+    board = Board.new
+    board.create_maze("./data/shortest_maze.rb")
+    board.set_open(" ")
+    board.make_mice(1)
+    board.mice[0].move_to_first_open_position
+
+    expect(board.mice[0].x_position).to eq(1)
+  end
+
   it "should recognize a visited square as not being an open position" do
     board = Board.new
     board.create_maze("./data/shortest_maze.rb")
@@ -60,7 +70,6 @@ describe '#mouse_class' do
     board = Board.new
     board.create_maze("./data/deadend_maze.rb")
     board.set_open(" ")
-    board.maze
     mouse1 = Mouse.new(board)
     mouse1.stub(:x_position){1}
     mouse1.stub(:y_position){1}
@@ -68,6 +77,7 @@ describe '#mouse_class' do
     mouse1.backtrack
 
     expect(mouse1.visited_path[-2][0]).to eq(0)
+
   end
 
 
@@ -77,6 +87,8 @@ describe "#board_class" do
 
   it "should make mice" do
     board = Board.new
+    board.create_maze("./data/deadend_maze.rb")
+    board.set_open(" ")
     board.make_mice(5)
 
     expect(board.mice.length).to eq(5)

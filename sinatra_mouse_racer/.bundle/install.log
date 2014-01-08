@@ -39,3 +39,17 @@ I, [2014-01-05T15:40:38.792565 #29054]  INFO -- : 0:  shotgun (0.9) from /Users/
 I, [2014-01-05T15:40:38.793007 #29054]  INFO -- : 0:  sinatra (1.4.4) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/sinatra-1.4.4.gemspec
 I, [2014-01-05T15:40:38.793290 #29054]  INFO -- : 0:  tux (0.3.0) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/tux-0.3.0.gemspec
 I, [2014-01-05T15:40:38.793550 #29054]  INFO -- : 0:  bundler (1.5.1) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353@global/specifications/bundler-1.5.1.gemspec
+I, [2014-01-08T15:17:05.170493 #35413]  INFO -- : 0:  bond (0.4.3) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/bond-0.4.3.gemspec
+I, [2014-01-08T15:17:07.179720 #35413]  INFO -- : 0:  tilt (1.4.1) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/tilt-1.4.1.gemspec
+I, [2014-01-08T15:17:08.762896 #35413]  INFO -- : 0:  haml (4.0.4) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/haml-4.0.4.gemspec
+I, [2014-01-08T15:17:10.493411 #35413]  INFO -- : 0:  rack (1.5.2) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/rack-1.5.2.gemspec
+I, [2014-01-08T15:17:11.033036 #35413]  INFO -- : 0:  rack-protection (1.5.1) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/rack-protection-1.5.1.gemspec
+I, [2014-01-08T15:17:11.894436 #35413]  INFO -- : 0:  rack-test (0.6.2) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/rack-test-0.6.2.gemspec
+I, [2014-01-08T15:17:12.440935 #35413]  INFO -- : 0:  rainbow (1.99.1) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/rainbow-1.99.1.gemspec
+I, [2014-01-08T15:17:13.325821 #35413]  INFO -- : 0:  ripl (0.7.0) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/ripl-0.7.0.gemspec
+I, [2014-01-08T15:17:14.749018 #35413]  INFO -- : 0:  ripl-multi_line (0.3.1) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/ripl-multi_line-0.3.1.gemspec
+I, [2014-01-08T15:17:15.341904 #35413]  INFO -- : 0:  ripl-rack (0.2.0) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/ripl-rack-0.2.0.gemspec
+I, [2014-01-08T15:17:16.203169 #35413]  INFO -- : 0:  shotgun (0.9) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/shotgun-0.9.gemspec
+I, [2014-01-08T15:17:18.107744 #35413]  INFO -- : 0:  sinatra (1.4.4) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/sinatra-1.4.4.gemspec
+I, [2014-01-08T15:17:18.930846 #35413]  INFO -- : 0:  tux (0.3.0) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353/specifications/tux-0.3.0.gemspec
+I, [2014-01-08T15:17:18.931309 #35413]  INFO -- : 0:  bundler (1.5.1) from /Users/Sterling/.rvm/gems/ruby-2.0.0-p353@global/specifications/bundler-1.5.1.gemspec

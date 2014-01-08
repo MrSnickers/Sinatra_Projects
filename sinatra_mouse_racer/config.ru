@@ -1,3 +1,3 @@
-require './maze_runner_app.rb'
+require './mouse_racer_app.rb'
 
 run App::Racer
