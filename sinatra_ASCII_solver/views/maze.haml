@@ -1,0 +1,28 @@
+%h1 MAZE RUNNER
+%h1
+  = @board.leading_x
+  = @board.leading_y
+  = @board.valid_positions
+.board_container
+  -@row_counter = 0
+  - while @row_counter < @board.maze.length
+    .row_container
+    -@board.maze[@row_counter].each do |square|
+      - case
+        -when @board.open_values.include?(square)
+          =square
+        -when square == "J"
+          .path      
+        -when square == "F"
+          .visited   
+        -when square == @board.path_value
+          .path
+        -when square == @board.visited_value
+          .visited
+        -when square == @board.mouse_face
+          .mouse
+        -else
+          =square
+
+          
+    -@row_counter += 1
