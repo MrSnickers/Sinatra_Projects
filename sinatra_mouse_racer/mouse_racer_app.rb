@@ -1,4 +1,4 @@
-#### MAZE RUNNER APP
+#### MOUSE RACER APP
 
 require 'bundler'
 Bundler.require

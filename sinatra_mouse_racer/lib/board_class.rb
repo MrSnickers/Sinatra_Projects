@@ -1,6 +1,5 @@
 ###CLASS BOARD
 
-require "rainbow"
 
 class Board
 
@@ -85,26 +84,26 @@ attr_accessor :leading_x, :leading_y
 
 ###searches along the unshuffled valid position array is essentially a clockwise search.######this might be useful for keeping wall on right hand side
   def move_to_first_open_position
-    valid_positions.shuffle.each do |coordinate_array|
-      if maze[coordinate_array[0]][coordinate_array[1]] == open_value
-        if @maze[leading_x][leading_y] == open_value
-            @maze[leading_x][leading_y] = path_value
-        elsif
-          @maze[leading_x][leading_y] = visited_value
-        end
-        @leading_x = coordinate_array[0]
-        @leading_y = coordinate_array[1]
-        return
-      end
-    end
-    valid_positions.each do |coordinate_array|
-        if maze[coordinate_array[0]][coordinate_array[1]] == path_value
-      @maze[leading_x][leading_y] = visited_value
-      @leading_x = coordinate_array[0]
-      @leading_y = coordinate_array[1]
-      break
-      end
-    end
+    # valid_positions.shuffle.each do |coordinate_array|
+    #   if maze[coordinate_array[0]][coordinate_array[1]] == open_value
+    #     if @maze[leading_x][leading_y] == open_value
+    #         @maze[leading_x][leading_y] = path_value
+    #     elsif
+    #       @maze[leading_x][leading_y] = visited_value
+    #     end
+    #     @leading_x = coordinate_array[0]
+    #     @leading_y = coordinate_array[1]
+    #     return
+    #   end
+    # end
+    # valid_positions.each do |coordinate_array|
+    #     if maze[coordinate_array[0]][coordinate_array[1]] == path_value
+    #   @maze[leading_x][leading_y] = visited_value
+    #   @leading_x = coordinate_array[0]
+    #   @leading_y = coordinate_array[1]
+    #   break
+    #   end
+    # end
   end
 
   def show_mouse
