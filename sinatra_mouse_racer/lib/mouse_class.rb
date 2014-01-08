@@ -9,6 +9,7 @@ attr_accessor :x_position, :y_position, :visited_path
 
   def initialize(board)
     @visited_path = []
+    @backtrack_counter = -2
     @x_position
     @y_position
     @board = board 
@@ -64,27 +65,32 @@ attr_accessor :x_position, :y_position, :visited_path
   end
 
 ###searches along the unshuffled valid position array is essentially a clockwise search.######this might be useful for keeping wall on right hand side
-  def move_to_first_open_position
-    valid_positions.shuffle.each do |coordinate_array|
-      if maze[coordinate_array[0]][coordinate_array[1]] == open_value
-        if @maze[x_position][y_position] == open_value
-            @maze[x_position][y_position] = path_value
-        elsif
-          @maze[x_position][y_position] = visited_value
-        end
-        @x_position = coordinate_array[0]
-        @y_position = coordinate_array[1]
-        return
-      end
-    end
+
+  def find_open_positions
+    open_positions = []
     valid_positions.each do |coordinate_array|
-      if maze[coordinate_array[0]][coordinate_array[1]] == path_value
-        @maze[x_position][y_position] = visited_value
-        @x_position = coordinate_array[0]
-        @y_position = coordinate_array[1]
-        break
-      end
+      open_positions << coordinate_array if board.maze[coordinate_array[0]][coordinate_array[1]] == board.open_value
     end
+    open_positions
+  end
+
+  def avoid_path
+    find_open_positions.select{|position| !visited_path.include?(position)}
+  end
+
+  def move_to_first_open_position
+    if avoid_path[0]
+      visited_path << [x_position, y_position]
+      x_coordinate = find_open_positions[0][0]
+      y_coordinate = find_open_positions[0][1]
+    else
+      backtrack
+    end
+  end
+
+  def backtrack
+      x_position = visited_path[-2][0]
+      y_position = visited_path[-2][1]
   end
 
 end
