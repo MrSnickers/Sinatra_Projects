@@ -1,7 +1,7 @@
 %h1 MAZE RUNNER
 
 %h1 
-  ="#{@board.mice[0].inspect},  #{@board.mice[1].inspect} "
+  ="#{@board.mice[0].visited_squares.inspect}"
 .board_container
   -@row_counter = 0
   - while @row_counter < @board.maze.length
@@ -12,9 +12,7 @@
           .open
         -when square == @board.mice[0].personal_marker
           .path
-        -when square == @board.mice[1].personal_marker
-          .visited
-        -when square == @mouse
+        -when square == @board.mice[0].face
           .mouse
         -else
           .wall

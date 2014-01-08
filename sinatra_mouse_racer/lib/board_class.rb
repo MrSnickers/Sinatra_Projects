@@ -5,11 +5,12 @@ class Board
 
 ### Assumes wall_value does not equal "o" or "x." That there is only one open space for an entrance and an exit. That entrance and exit are on left and right hand sides.
 
-attr_reader :maze, :mice, :open_value
+attr_reader :maze, :mice, :open_value, :wall_value
 
   def initialize
     @maze = []
     @open_value
+    @wall_value
     @mice = []
   end
 
@@ -23,16 +24,19 @@ attr_reader :maze, :mice, :open_value
     @maze = maze.transpose
   end
 
-  def set_open(open_value)
+  def set_open(open_value, wall_value)
     @open_value = open_value
+    @wall_value = wall_value
   end
 
   def make_mice(number)
+    counter = 1
     number.times do
       mouse = Mouse.new(self)
-      mouse.personal_marker = number
+      mouse.personal_marker = counter
       mouse.set_left_start_point
       mice << mouse
+      counter +=1
     end
   end
 

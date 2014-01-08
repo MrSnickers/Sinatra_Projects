@@ -5,7 +5,7 @@ Bundler.require
 
 require "./lib/board_class"
 require "./lib/mouse_class"
-enable 'sessions'
+# enable 'sessions'
 
 
 module App
@@ -13,15 +13,16 @@ module App
 
     @@board = Board.new
     @@board.create_maze("./data/maze.rb")
-    @@board.set_open(" ")
-    @@board.make_mice(2)
-    6.times do
-        @@board.turn
-    end
+    @@board.set_open(" ", "#")
+    @@board.make_mice(1)
+    # 4.times do
+        # @@board.turn
+    # end
 
 
     get'/run' do
     @board = @@board
+    @@board.turn
     haml :maze
     end
 
