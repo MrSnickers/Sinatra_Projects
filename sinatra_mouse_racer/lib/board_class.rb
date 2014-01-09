@@ -5,14 +5,14 @@ class Board
 
 ### Assumes wall_value does not equal "o" or "x." That there is only one open space for an entrance and an exit. That entrance and exit are on left and right hand sides.
 
-attr_reader :maze, :mice, :open_value, :wall_value, :solved
+attr_reader :maze, :mice, :open_value, :wall_value, :solved_by
 
   def initialize
     @maze = []
     @open_value
     @wall_value
     @mice = []
-    @solved = false
+    @solved_by = false
   end
 
   def create_maze(file)
@@ -44,7 +44,7 @@ attr_reader :maze, :mice, :open_value, :wall_value, :solved
   def turn
     mice.each do |mouse|
       mouse.move_to_first_open_position
-      @solved = true if mouse.x_position == @maze.length-1
+      @solved_by = mouse if mouse.x_position == @maze.length-1
     end
     
   end

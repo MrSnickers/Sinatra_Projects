@@ -1,8 +1,9 @@
 %h1 MAZE RUNNER
 
-%h1 
-  ="#{@board.mice[0].squares_visited.inspect}"
-  ="#{@board.mice[1].squares_visited.inspect}"
+-if @board.solved_by
+  %h1
+    - @board.solved_by.personal_marker
+
 .board_container
   -@row_counter = 0
   - while @row_counter < @board.maze.length
