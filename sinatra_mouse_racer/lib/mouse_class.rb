@@ -5,10 +5,11 @@ class Mouse
 ### Assumes wall_value does not equal "o" or "x." That there is only one open space for an entrance and an exit. That entrance and exit are on left and right hand sides.
 
 attr_reader :path_marker, :board, :face
-attr_accessor :x_position, :y_position, :visited_squares, :personal_marker
+attr_accessor :x_position, :y_position, :backwards_path, :personal_marker, :squares_visited
 
   def initialize(board)
-    @visited_squares = {}
+    @backwards_path = {}
+    @squares_visited = []
     @personal_marker
     @face = "8"
     @x_position
@@ -57,8 +58,9 @@ attr_accessor :x_position, :y_position, :visited_squares, :personal_marker
                       validate(x_position, y_position+1),
                       validate(x_position-1, y_position)
                    ]
+      puts "it's valid!"
+    valid_options.compact.shuffle
 
-    valid_options.compact
   end
 
   def find_open_positions
@@ -66,32 +68,49 @@ attr_accessor :x_position, :y_position, :visited_squares, :personal_marker
     valid_positions.each do |coordinate_array|
       open_positions << coordinate_array if board.maze[coordinate_array[0]][coordinate_array[1]] != board.wall_value
     end
+    puts "I'm at #{x_position}, #{y_position}."
+    puts "open positions are #{open_positions.inspect}"
     open_positions
   end
 
   def fresh_squares
-   find_open_positions.select{|position| !visited_squares.has_value?(position)}
+   fs=find_open_positions.select{|position| !squares_visited.include?(position)}
+   puts "fresh squares are #{fs}"
+   fs
   end
 
   def move_to_first_open_position
-    debugger
-    if fresh_squares[0]
-      new_x = find_open_positions[0][0]
-      new_y = find_open_positions[0][1]
-      visited_squares[[x_position, y_position]] = [new_x, new_y]
-      board.maze[x_position][y_position] = personal_marker
-      @x_position = find_open_positions[0][0]
-      @y_position = find_open_positions[0][1]
-      board.maze[@x_position][@y_position] = face
+    new_square = fresh_squares[0]
+    if new_square
+      new_x = new_square[0]
+      new_y = new_square[1]
+      squares_visited << new_square
+      backwards_path[[x_position, y_position]] = new_square
+      place_marker
+      @x_position = new_x
+      @y_position = new_y
+      show_face
     else
       backtrack
+      puts "backing up!"
     end
   end
 
   def backtrack
-    parent_square = visited_squares.key([x_position, y_position])
+    puts self.inspect
+    place_marker
+    parent_square = backwards_path.key([x_position, y_position])
     @x_position = parent_square[0]
     @y_position = parent_square[1]
+    show_face
+  end
+
+  def place_marker
+    board.maze[x_position][y_position] = personal_marker
+  end
+
+  def show_face
+    board.maze[x_position][y_position] = face
   end
 
 end

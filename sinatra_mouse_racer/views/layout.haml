@@ -1,7 +1,8 @@
 !!!
 %head
   %link{:href=>"/style.css", :type=>"text/css", :rel=>"stylesheet"}
-  / %meta{:http=>{:equiv=>'refresh'}, :content=>'0.4'} -unless @board.solved
+  -unless @board.solved
+    %meta{:http=>{:equiv =>"refresh"}, :content=>'0.4'}
   %title Mouse Racer
 
   %body

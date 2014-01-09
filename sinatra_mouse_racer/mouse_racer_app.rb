@@ -14,11 +14,7 @@ module App
     @@board = Board.new
     @@board.create_maze("./data/maze.rb")
     @@board.set_open(" ", "#")
-    @@board.make_mice(1)
-    # 4.times do
-        # @@board.turn
-    # end
-
+    @@board.make_mice(2)
 
     get'/run' do
     @board = @@board

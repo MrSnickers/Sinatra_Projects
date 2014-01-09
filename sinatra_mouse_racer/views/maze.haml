@@ -1,7 +1,8 @@
 %h1 MAZE RUNNER
 
 %h1 
-  ="#{@board.mice[0].visited_squares.inspect}"
+  ="#{@board.mice[0].squares_visited.inspect}"
+  ="#{@board.mice[1].squares_visited.inspect}"
 .board_container
   -@row_counter = 0
   - while @row_counter < @board.maze.length
@@ -9,13 +10,19 @@
     -@board.maze[@row_counter].each do |square|
       - case
         -when square == @board.open_value
-          .open
+          .position.open
         -when square == @board.mice[0].personal_marker
-          .path
+          .position.one
+        -when square == @board.mice[1].personal_marker
+          .position.two
         -when square == @board.mice[0].face
-          .mouse
+          .position.face
         -else
-          .wall
+          .position.wall
 
           
     -@row_counter += 1
+
+
+
+    / convert to scss
