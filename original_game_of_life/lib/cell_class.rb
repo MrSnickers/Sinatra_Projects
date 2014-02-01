@@ -49,10 +49,13 @@ class Cell
       @stay_alive = false
     elsif live_neighbor_count == 3 && @alive == true
       @stay_alive = true
+      game.alive_cell_count += 1
     elsif live_neighbor_count == 3 && @alive == false
       @stay_alive = true
+      game.alive_cell_count += 1
     elsif live_neighbor_count == 2 && @alive == true
       @stay_alive = true
+      game.alive_cell_count += 1
     elsif live_neighbor_count == 2 && @alive == false
       @stay_alive = false
     end

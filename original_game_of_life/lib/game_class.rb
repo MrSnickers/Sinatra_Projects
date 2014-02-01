@@ -3,7 +3,7 @@
 class Game
 
 attr_reader  :width, :height, :board, :tick_count
-attr_accessor :pause
+attr_accessor :pause,:alive_cell_count, :alive_cell_history
 
   def initialize(w,h)
   @width = w
@@ -11,6 +11,8 @@ attr_accessor :pause
   @board = Array.new(width) {Array.new(height)}
   @tick_count = 0
   @pause = false
+  @alive_cell_count = 0
+  @alive_cell_history = []
 
   width_counter = 0
   height_counter = 0
@@ -29,7 +31,10 @@ end
     cell_count.times do
       current_cell = board[rand(0...width)][rand(0...height)]
       current_cell.alive = true
+      self.alive_cell_count += 1
     end
+    self.alive_cell_history << self.alive_cell_count
+    self.alive_cell_count = 0
   end
 
   def create_blinker
@@ -66,6 +71,10 @@ end
     end
   end
 
+  def stable_state_check
+     @pause = true if @alive_cell_history[-10..-1].uniq.length == 1
+  end
+
   def tick
     width_counter = 0
     height_counter = 0
@@ -79,24 +88,9 @@ end
       width_counter +=1
     end
     @tick_count += 1
-  end
-
-  def print_board
-    width_counter = 0
-    height_counter = 0
-    while width_counter < width do
-      while height_counter < height do
-        if @board[width_counter][height_counter].alive == false
-            print "   ".color(0, 0, 0)
-        else
-            print " O ".color(255, 255, 255)
-        end
-        height_counter += 1
-      end
-      height_counter = 0
-      width_counter += 1
-      print "\n"
-    end
+    self.alive_cell_history << self.alive_cell_count
+    self.alive_cell_count = 0
+    self.stable_state_check if @tick_count > 10
   end
 
 
