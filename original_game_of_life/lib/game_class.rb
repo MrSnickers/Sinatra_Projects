@@ -44,17 +44,17 @@ end
   end
 
   def create_pulsar
-    board[10, 7].alive = true
-    board[9, 8].alive = true
-    board[11, 8].alive = true
-    board[9, 9].alive = true
-    board[11, 9].alive = true
-    board[10, 10].alive = true
-    board[9, 11].alive = true
-    board[11, 11].alive = true
-    board[9, 12].alive = true
-    board[11, 12].alive = true
-    board[10, 13].alive = true
+    board[10][7].alive = true
+    board[9][8].alive = true
+    board[11][8].alive = true
+    board[9][9].alive = true
+    board[11][9].alive = true
+    board[10][10].alive = true
+    board[9][11].alive = true
+    board[11][11].alive = true
+    board[9][12].alive = true
+    board[11][12].alive = true
+    board[10][13].alive = true
   end
 
   def scan_all_cells

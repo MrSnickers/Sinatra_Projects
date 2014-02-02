@@ -6,7 +6,7 @@ require './lib/game_class.rb'
 
 module Life
   class Gameof < Sinatra::Application
-
+    @@game = Game.new(20,20)
 
   get '/' do
     "Hello!"
@@ -17,21 +17,37 @@ module Life
   end
 
   post '/create' do
-    @@game = Game.new(20,30)
-    @@game.randomize_live_cells(100)
+    case params[:game_type]
+      when "free_hand"
+        erb :edit
+      when "pulsar"
+        @@game = Game.new(20,20)
+        @@game.create_pulsar
+        redirect '/show'
+      when "glider_gun"
+        @@game = Game.new(20,20)
+        @@game.create_glider_gun
+        redirect '/show'
+      else
+        redirect '/broken'
+    end
+  end
+
+  get '/edit' do
 
   end
 
-  get '/game' do
+  get '/broken' do
+    erb :broken
+  end
+
+  get '/show' do
     @row_counter = 0
     @local_game = @@game
-    @alive = "blue"
-    @black = "transparent"
     @local_game.scan_all_cells
     @local_game.tick
-    erb :game
+    erb :show
   end
-
 
   end
 end

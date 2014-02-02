@@ -8,7 +8,7 @@
   <% while @row_counter < @local_game.width %>
   <div id="row_container">
     <%@local_game.board[@row_counter].each do |cell|%>
-       <div class="cell" style="background: <%=cell.alive ? @alive : @dead %>;"></div>
+       <div class="cell" style="background: rgb(<%= cell.red%>, <%=cell.green%>, <%=cell.blue%>);"></div>
     <%end%>
   </div>
   <%@row_counter += 1%>
