@@ -1,0 +1,28 @@
+body {
+    background-color: white;
+}
+h1 {
+    color: black;
+    font-size: 30px;
+
+}
+.board_container {
+    position: relative 0px;
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+}
+.row-container {
+    display: inline;
+    margin: 1 auto;
+    width: 100%;
+}
+.cell {
+    display: inline-block;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+}
+
+
+/*background: linear-gradient(135deg, rgba(248,80,50,1) 0%,rgba(241,111,92,1) 43%,rgba(246,41,12,1) 58%,rgba(240,47,23,1) 71%,rgba(231,56,39,1) 100%)*/
