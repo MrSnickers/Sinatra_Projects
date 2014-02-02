@@ -1,0 +1,21 @@
+.img{
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.row{
+  text-align: center;
+}
+
+.text-muted {
+  color: #9a9a9a;
+  text-shadow: 0.1em 0.1em #EEE;
+}
+
+.container_marketing{
+  width: 90%;
+}
+
+.notnav{
+  margin: 40px 0px 0px 0px;
+}
