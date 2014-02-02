@@ -1,4 +1,13 @@
-%body
-  %h1 MAZE RUNNER
-  %form{:action=>"/run", :method=>"POST"}
-    %button{:type=>"submit", :value=>"run"} Run!
+!!!
+%head
+  %link{:href=>"http://fonts.googleapis.com/css?family=Arapey", :rel=>"stylesheet", :type=>"text/css"}
+  %link{:href=>"/style.css", :type=>"text/css", :rel=>"stylesheet"}
+
+  %body
+    %form{:action=>"/run", :method=>"GET"}
+      %h1
+        Welcome to The Mouse Races!
+
+
+      %button{:type=>"submit"}
+        RACE!

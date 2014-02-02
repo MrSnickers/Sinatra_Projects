@@ -1,29 +1,38 @@
-%h1 MAZE RUNNER
+!!!
+%head
+  %link{:href=>"/style.css", :type=>"text/css", :rel=>"stylesheet"}
+  -unless @board.solved_by
+    %meta{:http=>{:equiv =>"refresh"}, :content=>'0.6'}
+  %title Mouse Racer
 
--if @board.solved_by
-  %h1
-    - @board.solved_by.personal_marker
+%body
 
-.board_container
-  -@row_counter = 0
-  - while @row_counter < @board.maze.length
-    .row_container
-    -@board.maze[@row_counter].each do |square|
-      - case
-        -when square == @board.open_value
-          .position.open
-        -when square == @board.mice[0].personal_marker
-          .position.one
-        -when square == @board.mice[1].personal_marker
-          .position.two
-        -when square == @board.mice[0].face
-          .position.face
-        -else
-          .position.wall
+  %h1 MAZE RUNNER
 
-          
-    -@row_counter += 1
+  -if @board.solved_by
+    %h1
+      - @board.solved_by.personal_marker
 
+  .board_container
+    -@row_counter = 0
+    - while @row_counter < @board.maze.length
+      .row_container
+      -@board.maze[@row_counter].each do |square|
+        - case
+          -when square == @board.open_value
+            .position.open
+          -when square == @board.mice[0].personal_marker
+            .position.one
+          -when square == @board.mice[1].personal_marker
+            .position.two
+          -when square == @board.mice[0].face
+            .position.face
+          -else
+            .position.wall
 
+            
+      -@row_counter += 1
 
-    / convert to scss
+  %br
+  
+  %a{:href=>"/"} Back?

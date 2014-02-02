@@ -11,16 +11,23 @@ require "./lib/mouse_class"
 module App
   class Racer< Sinatra::Application
 
+    get'/' do
     @@board = Board.new
     @@board.create_maze("./data/maze.rb")
     @@board.set_open(" ", "#")
     @@board.make_mice(2)
+    haml :welcome
+    end
 
-    get'/run' do
+
+    get '/run' do
     @board = @@board
     @@board.turn
+
     haml :maze
     end
+
+
 
 
    end
