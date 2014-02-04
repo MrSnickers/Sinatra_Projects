@@ -13,19 +13,22 @@ module Life
   end
 
   get '/new' do
+    @local_game = @@game
     erb :new
   end
 
   post '/create' do
     case params[:game_type]
+      when "random"
+        @@game.randomize_live_cells(100)
+        redirect '/show'
       when "free_hand"
-        erb :edit
+        redirect '/edit'
       when "pulsar"
-        @@game = Game.new(20,20)
         @@game.create_pulsar
         redirect '/show'
       when "glider_gun"
-        @@game = Game.new(20,20)
+        @@game = Game.new(28, 40)
         @@game.create_glider_gun
         redirect '/show'
       else
@@ -34,7 +37,12 @@ module Life
   end
 
   get '/edit' do
+    @local_game = @@game
+    erb :edit
+  end
 
+  post '/update' do
+    erb :broken
   end
 
   get '/broken' do
@@ -46,6 +54,7 @@ module Life
     @local_game = @@game
     @local_game.scan_all_cells
     @local_game.tick
+    @ages = @@game.sort_histogram
     erb :show
   end
 

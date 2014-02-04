@@ -1,5 +1,5 @@
 <head>
-      <meta  <%= "http-equiv='refresh' content='0.8'" unless @local_game.pause %> >
+      <meta  <%= "http-equiv='refresh' content='0.6'" unless @local_game.pause %> >
 </head>
 
 <h1>Generation <%= @local_game.tick_count %> </h1>
@@ -13,4 +13,9 @@
   </div>
   <%@row_counter += 1%>
   <%end%>
+  <ul>
+    <%@ages.each_with_index do |count, age|%>
+     <li><%=age%>: <%=count%></li>
+    <%end%>
+  </ul>
 </div>

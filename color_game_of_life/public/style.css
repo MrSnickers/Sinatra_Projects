@@ -1,8 +1,9 @@
 body {
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 h1 {
-    color: black;
+    color: white;
     font-size: 30px;
 
 }
@@ -19,9 +20,13 @@ h1 {
 }
 .cell {
     display: inline-block;
+    border-radius: 40px;
     margin: auto;
     width: 40px;
     height: 40px;
+}
+.box{
+    display: inline-block;
 }
 
 
