@@ -7,12 +7,6 @@
 
 %body
 
-  %h1 MAZE RUNNER
-
-  -if @board.solved_by
-    %h1
-      - @board.solved_by.personal_marker
-
   .board_container
     -@row_counter = 0
     - while @row_counter < @board.maze.length
@@ -20,19 +14,21 @@
       -@board.maze[@row_counter].each do |square|
         - case
           -when square == @board.open_value
-            .position.open
+            .tile.open
           -when square == @board.mice[0].personal_marker
-            .position.one
+            .tile.one
           -when square == @board.mice[1].personal_marker
-            .position.two
+            .tile.two
           -when square == @board.mice[0].face
-            .position.face
+            .tile.face
           -else
-            .position.wall
-
-            
+            .tile.wall
+        
       -@row_counter += 1
 
-  %br
-  
-  %a{:href=>"/"} Back?
+    -if @board.solved_by
+      .win_notice
+        %h1
+          = "Mouse #{@board.solved_by.personal_marker} wins!"
+        %br
+        %a.link{:href=>"/"} Play Again?

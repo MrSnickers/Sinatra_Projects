@@ -1,6 +1,19 @@
 body {
     background-color: black;
     font-family: 'Arapey', serif;
+    text-align: center;
+    position: relative 0px;
+}
+
+h1 {
+    color: white;
+    font-size: 30px;
+}
+
+.win_notice{
+  position: absolute;
+  top: 200px;
+  left: 0;
 }
 
 button {
@@ -24,6 +37,7 @@ button {
    font-family: Georgia, serif;
    text-decoration: none;
    vertical-align: middle;
+   margin: 0 auto;
    }
 button:hover {
    border-top-color: #28597a;
@@ -35,11 +49,6 @@ button:active {
    background: #1b435e;
    }
 
-h1 {
-    color: white;
-    font-size: 30px;
-
-}
 .board_container {
     position: relative 0px;
     width: 95%;
@@ -48,21 +57,22 @@ h1 {
 }
 .row-container {
     display: inline-flex;
-    margin: 1 auto;
+    margin: 0 auto;
 }
-.a{
+.link{
     color: white;
-    font-size: 30px;
+    font-size: 40px;
+    text-align: center;
 }
-.position{
+.tile{
     display: inline-block;
     margin: auto;
     width: 60px;
     height: 60px;
-
 }
 .one {
     background: purple;
+
 }
 .two {
     background: yellow;
