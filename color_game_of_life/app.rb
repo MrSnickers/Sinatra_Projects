@@ -6,7 +6,7 @@ require './lib/game_class.rb'
 
 module Life
   class Gameof < Sinatra::Application
-    @@game = Game.new(20,20)
+    @@game = Game.new(18,22)
 
   get '/' do
     "Hello!"
@@ -14,7 +14,7 @@ module Life
 
   get '/new' do
     @local_game = @@game
-    erb :new
+    haml :new
   end
 
   post '/create' do
@@ -55,7 +55,7 @@ module Life
     @local_game.scan_all_cells
     @local_game.tick
     @ages = @@game.sort_histogram
-    erb :show
+    haml :show
   end
 
   end

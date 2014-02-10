@@ -5,11 +5,15 @@ body {
 h1 {
     color: white;
     font-size: 30px;
-
+}
+.generation_counter{
+  position: absolute;
+  top: 200px;
+  left: 0;
 }
 .board_container {
     position: relative 0px;
-    width: 800px;
+    width: 1000px;
     height: 800px;
     margin: 0 auto;
 }

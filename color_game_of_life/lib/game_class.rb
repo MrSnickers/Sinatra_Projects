@@ -2,6 +2,8 @@
 
 class Game
 
+require 'csv'
+
 attr_reader  :width, :height, :board, :tick_count
 attr_accessor :pause,:alive_cell_count, :alive_cell_history, :cell_age_histogram
 
@@ -74,6 +76,12 @@ end
       end
     end
     sorted_histogram
+  end
+
+  def write_to_csv
+    CSV.open("cells.csv", "w") do |csv|
+      csv << self.sort_histogram
+    end
   end
 
   def randomize_live_cells(cell_count)

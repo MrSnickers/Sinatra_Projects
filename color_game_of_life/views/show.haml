@@ -1,0 +1,15 @@
+%head
+  -unless @local_game.pause
+    %meta{:http=>{:equiv=>'refresh'}, :content=>'0.6'}
+
+.board_container
+  -while @row_counter < @local_game.width
+    .row_container
+      -@local_game.board[@row_counter].each do |cell|
+        .cell{:style=>"background-color: rgb(#{cell.red}, #{cell.green}, #{cell.blue});"}
+      -@row_counter += 1
+
+  - if @local_game.pause
+    %h1.generation_counter This game reached a stable state in #{@local_game.tick_count} generations.
+  - else
+    %h1.generation_counter Generation: #{@local_game.tick_count}
