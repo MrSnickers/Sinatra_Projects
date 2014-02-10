@@ -1,0 +1,12 @@
+%form{:action=>"/update", :method=>"POST"}
+  %label{:for=>"cell_selector"}Pick your cells!
+
+  .picker
+    -@local_game.board.each do |row|
+      .picker_row
+        -row.each do |box|
+          .box
+            %input{:name=>"box#{box.x_coordinate},#{box.x_coordinate}", :type=>"checkbox"}
+
+
+  %input{:type=>"submit", :value=>"Submit"}Let's Play!

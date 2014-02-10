@@ -9,7 +9,9 @@
         .cell{:style=>"background-color: rgb(#{cell.red}, #{cell.green}, #{cell.blue});"}
       -@row_counter += 1
 
-  - if @local_game.pause
-    %h1.generation_counter This game reached a stable state in #{@local_game.tick_count} generations.
-  - else
-    %h1.generation_counter Generation: #{@local_game.tick_count}
+  .ending_status
+    - if @local_game.pause
+      %h1.generation_counter Now stable after #{@local_game.tick_count} generations.
+      %a.back{:link=>'/new'} Back
+    - else
+      %h1.generation_counter Generation: #{@local_game.tick_count}

@@ -6,13 +6,13 @@ require './lib/game_class.rb'
 
 module Life
   class Gameof < Sinatra::Application
-    @@game = Game.new(18,22)
 
   get '/' do
     "Hello!"
   end
 
   get '/new' do
+    @@game = Game.new(18,22)
     @local_game = @@game
     haml :new
   end
@@ -38,15 +38,15 @@ module Life
 
   get '/edit' do
     @local_game = @@game
-    erb :edit
+    haml :edit
   end
 
   post '/update' do
-    erb :broken
+    haml :broken
   end
 
   get '/broken' do
-    erb :broken
+    haml :broken
   end
 
   get '/show' do
