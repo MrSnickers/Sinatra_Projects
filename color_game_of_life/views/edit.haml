@@ -1,12 +1,12 @@
-%form{:action=>"/update", :method=>"POST"}
-  %label{:for=>"cell_selector"}Pick your cells!
+%form{:name=>"cell_selector", :action=>"/update", :method=>"POST"}
+  %label.play{:for=>"cell_selector"}Pick your cells!
 
   .picker
     -@local_game.board.each do |row|
       .picker_row
         -row.each do |box|
-          .box
-            %input{:name=>"box#{box.x_coordinate},#{box.x_coordinate}", :type=>"checkbox"}
+          %input.box{:id=>"check", :name=>"box#{box.x_coordinate}#{box.y_coordinate}[#{box.x_coordinate}][#{box.y_coordinate}]", :type=>"checkbox"}
+          %label.box_label{:for=>"check"}
 
 
-  %input{:type=>"submit", :value=>"Submit"}Let's Play!
+  %input.back{:type=>"submit", :value=>"Let's Play!"}

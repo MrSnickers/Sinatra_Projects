@@ -13,7 +13,6 @@ module Life
 
   get '/new' do
     @@game = Game.new(18,22)
-    @local_game = @@game
     haml :new
   end
 
@@ -42,11 +41,22 @@ module Life
   end
 
   post '/update' do
-    haml :broken
+    params.each do |key, value|
+      value.each do |x, inner_hash|
+        inner_hash.each do |y, value|
+          @@game.board[x.to_i][y.to_i].alive = true
+          @@game.board[x.to_i][y.to_i].age = 1
+        end
+      end
+    end
+    @row_counter = 0
+    @local_game = @@game
+    @ages = @@game.sort_histogram
+    haml :show
   end
 
-  get '/broken' do
-    haml :broken
+  get '/update' do
+    redirect '/show'
   end
 
   get '/show' do
@@ -56,6 +66,10 @@ module Life
     @local_game.tick
     @ages = @@game.sort_histogram
     haml :show
+  end
+
+  get '/broken' do
+    haml :broken
   end
 
   end
