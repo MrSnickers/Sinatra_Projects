@@ -2,10 +2,27 @@ body {
   background-color: black;
   color: white;
 }
+
 h1 {
   color: white;
   font-size: 30px;
 }
+
+.new{
+  font-size: 30px;
+}
+.form_container{
+  width: 100%;
+}
+.new_form{
+  width: 50%;
+  margin: 0 auto;
+}
+
+#game_type{
+  font-size: 50px;
+}
+
 .box{
   width: 15px;
   display: inline-block;
@@ -27,17 +44,17 @@ h1 {
 
 }
 .board_container {
-  position: relative 0px;
-  width: 1000px;
-  height: 800px;
+  position: relative;
+  display: block;
   margin: 0 auto;
+  min-width: 1400px;
+  width: 100%;
 }
 .row-container {
   display: inline;
-  margin: 1 auto;
-  width: 100%;
+  text-align: center 
 }
-.histogram{
+.census{
   position: absolute;
   width: 250px;
   top: 0px;
@@ -46,15 +63,15 @@ h1 {
 .ending_status{
   position: absolute;
   width: 250px;
-  top: 200px;
-  left: 0;
+  bottom: 100px;
+  right: 0;
 }
 .cell {
   display: inline-block;
   border-radius: 40px;
   margin: auto;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 .back {
   font-size: 20px;

@@ -12,7 +12,7 @@ module Life
   end
 
   get '/new' do
-    @@game = Game.new(18,22)
+    @@game = Game.new(22, 37)
     haml :new
   end
 
@@ -27,7 +27,7 @@ module Life
         @@game.create_pulsar
         redirect '/show'
       when "glider_gun"
-        @@game = Game.new(28, 40)
+        @@game = Game.new(22, 37)
         @@game.create_glider_gun
         redirect '/show'
       else
@@ -51,7 +51,6 @@ module Life
     end
     @row_counter = 0
     @local_game = @@game
-    @ages = @@game.sort_histogram
     haml :show
   end
 
@@ -64,7 +63,9 @@ module Life
     @local_game = @@game
     @local_game.scan_all_cells
     @local_game.tick
-    @ages = @@game.sort_histogram
+    @local_game.record_census
+    @census = @@game.formatted_census
+    @ages = @@game.formatted_histogram
     haml :show
   end
 

@@ -1,9 +1,11 @@
-%form{:action=>"/create", :method=>"POST"}
-  %label{:for=>"game_type"}Do you want to choose your own cells or try out some stable configurations?
-  %select{:id=>"game_type", :type=>"select", :name=>"game_type"}
-    %option{:value=>"random"}populate randomly
-    %option{:value=>"free_hand", :selected => true}choose your own cells
-    %option{:value=>"pulsar"}make a pulsar
-    %option{:value=>"glider_gun"}fire Katie's Glider Gun
-
-  %button{:type=>"submit", :value=>"Submit"}Go!
+.form_container
+  .new_form
+    %form{:action=>"/create", :method=>"POST"}
+      %label{:class=>"new", :for=>"game_type"}Select your cell configuration:
+      %select{:id=>"game_type", :type=>"select", :name=>"game_type"}
+        %option{:value=>"random"}populate randomly
+        %option{:value=>"free_hand", :selected => true}choose your own cells
+        %option{:value=>"pulsar"}make a pulsar
+        %option{:value=>"glider_gun"}fire Katie's Glider Gun
+        <br/>
+      %button{:class=>"back", :type=>"submit", :value=>"Submit"}Go!

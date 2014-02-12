@@ -3,9 +3,8 @@
 class Game
 
 require 'csv'
-
-attr_reader  :width, :height, :board, :tick_count
-attr_accessor :pause,:alive_cell_count, :alive_cell_history, :cell_age_histogram
+attr_reader :width, :height
+attr_accessor :board, :tick_count, :pause,:alive_cell_count, :alive_cell_history, :age_at_death_history, :cell_age_census
 
   def initialize(w,h)
   @width = w
@@ -15,7 +14,8 @@ attr_accessor :pause,:alive_cell_count, :alive_cell_history, :cell_age_histogram
   @pause = false
   @alive_cell_count = 0
   @alive_cell_history = []
-  @cell_age_histogram = []
+  @age_at_death_history = []
+  @cell_age_census = []
 
   width_counter = 0
   height_counter = 0
@@ -33,9 +33,11 @@ end
   def scan_all_cells
     width_counter = 0
     height_counter = 0
+    @cell_age_census = []
 
     while width_counter < width do
       while height_counter < height do
+        board[width_counter][height_counter].record_age
         board[width_counter][height_counter].decide
         height_counter += 1
       end
@@ -45,15 +47,15 @@ end
   end
 
   def stable_state_check
-     @pause = true if @alive_cell_history[-10..-1].uniq.length == 1
+     pause = true if alive_cell_history[-10..-1].uniq.length == 1
   end
 
   def tick
     width_counter = 0
     height_counter = 0
 
-    while width_counter < width do
-      while height_counter < height do
+    while width_counter < @width do
+      while height_counter < @height do
         board[width_counter][height_counter].alive = board[width_counter][height_counter].stay_alive
         height_counter += 1
       end
@@ -66,21 +68,41 @@ end
     self.stable_state_check if @tick_count > 10
   end
 
-  def sort_histogram
-    sorted_histogram = []
-    cell_age_histogram.each do |element|
-      if sorted_histogram[element].nil?
-        sorted_histogram[element] = 0
+  def sort_age(data_set)
+    sorted_data = []
+    data_set.each do |element|
+      if sorted_data[element].nil?
+        sorted_data[element] = 1
       else
-      sorted_histogram[element] +=1
+      sorted_data[element] +=1
       end
     end
-    sorted_histogram
+    sorted_data
   end
 
-  def write_to_csv
-    CSV.open("cells.csv", "w") do |csv|
-      csv << self.sort_histogram
+  def format_data(data_set)
+    formatted = {}
+    sort_age(data_set).each_with_index do |frequency, index|
+      frequency = 0 if frequency.nil?
+      formatted[index] = frequency
+    end
+    formatted
+  end
+
+  def formatted_histogram
+    format_data(@age_at_death_history)
+  end
+
+  def formatted_census
+    format_data(@cell_age_census)
+  end
+
+  def record_census
+    census = self.formatted_census
+    CSV.open("cells.csv", "wb") do |csv|
+      census.to_a.each do |item|
+        csv << item
+      end
     end
   end
 
@@ -101,17 +123,29 @@ end
   end
 
   def create_pulsar
-    board[10][7].alive = true
-    board[9][8].alive = true
-    board[11][8].alive = true
-    board[9][9].alive = true
-    board[11][9].alive = true
-    board[10][10].alive = true
-    board[9][11].alive = true
-    board[11][11].alive = true
-    board[9][12].alive = true
-    board[11][12].alive = true
-    board[10][13].alive = true
+    board[11][17].alive = true
+    board[10][18].alive = true
+    board[12][18].alive = true
+    board[10][19].alive = true
+    board[12][19].alive = true
+    board[11][20].alive = true
+    board[10][21].alive = true
+    board[12][21].alive = true
+    board[10][22].alive = true
+    board[12][22].alive = true
+    board[11][23].alive = true
+
+    board[11][17].age = 1
+    board[10][18].age = 1
+    board[12][18].age = 1
+    board[10][19].age = 1
+    board[12][19].age = 1
+    board[11][20].age = 1
+    board[10][21].age = 1
+    board[12][21].age = 1
+    board[10][22].age = 1
+    board[12][22].age = 1
+    board[11][23].age = 1
   end
 
   def create_glider_gun

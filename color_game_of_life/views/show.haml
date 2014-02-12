@@ -1,20 +1,20 @@
 %head
   -unless @local_game.pause
     %meta{:http=>{:equiv=>'refresh'}, :content=>'0.6'}
+%body
+  .board_container
+    -while @row_counter < @local_game.width
+      .row_container
+        -@local_game.board[@row_counter].each do |cell|
+          .cell{:style=>"background-color: rgb(#{cell.red}, #{cell.green}, #{cell.blue});"}
+        -@row_counter += 1
 
-.board_container
-  -while @row_counter < @local_game.width
-    .row_container
-      -@local_game.board[@row_counter].each do |cell|
-        .cell{:style=>"background-color: rgb(#{cell.red}, #{cell.green}, #{cell.blue});"}
-      -@row_counter += 1
-
-  .histogram
-    =@age.inspect
-
-  .ending_status
-    - if @local_game.pause
-      %h1.generation_counter Now stable after #{@local_game.tick_count} generations.
-      %a.back{:href=>'/new'} Back
-    - else
-      %h1.generation_counter Generation: #{@local_game.tick_count}
+    .ending_status
+      - if @local_game.pause
+        %h1.generation_counter Now stable after #{@local_game.tick_count} generations.
+        %a.back{:href=>'/new'} Back
+      - else
+        %h1.generation_counter Generation: #{@local_game.tick_count}
+  .census
+    %script{:src=>"http://d3js.org/d3.v3.min.js", :charset=>"utf-8"}
+    %script{:type=>"text/javascript", :src=>"census.js"}

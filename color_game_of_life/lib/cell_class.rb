@@ -1,8 +1,8 @@
 ### CELL CLASS 2.0
 
 class Cell
-  attr_reader :x_coordinate, :y_coordinate, :neighbors, :game
-  attr_accessor :alive, :stay_alive, :age
+  attr_reader :x_coordinate, :y_coordinate
+  attr_accessor :neighbors, :game, :alive, :stay_alive, :age
 
   def initialize(x,y, game)
     @x_coordinate = x
@@ -45,10 +45,14 @@ class Cell
     live_neighbor_array.length
   end
 
+  def record_age
+    game.cell_age_census << age unless age == 0
+  end
+
   def decide
     if (live_neighbor_count < 2 || live_neighbor_count > 3) && @alive ==true
       @stay_alive = false
-      @game.cell_age_histogram << @age
+      @game.age_at_death_history << age
       @age = 0
     elsif (live_neighbor_count < 2 || live_neighbor_count > 3) && @alive ==false
       @stay_alive = false
