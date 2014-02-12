@@ -15,6 +15,11 @@
         %a.back{:href=>'/new'} Back
       - else
         %h1.generation_counter Generation: #{@local_game.tick_count}
+        %a.back{:href=>'/reckoning'}Reckoning
+        
   .census
     %script{:src=>"http://d3js.org/d3.v3.min.js", :charset=>"utf-8"}
-    %script{:type=>"text/javascript", :src=>"census.js"}
+    %script{:type=>"text/javascript", :src=>"js/census.js"}
+
+  / .histogram
+  /   %script{:type=>"text/javascript", :src=>"js/histogram.js"}

@@ -26,7 +26,7 @@ attr_accessor :board, :tick_count, :pause,:alive_cell_count, :alive_cell_history
         height_counter += 1
       end
       height_counter = 0
-      width_counter +=1
+      width_counter += 1
     end
 end
 
@@ -42,12 +42,12 @@ end
         height_counter += 1
       end
       height_counter = 0
-      width_counter +=1
+      width_counter += 1
     end
   end
 
   def stable_state_check
-     pause = true if alive_cell_history[-10..-1].uniq.length == 1
+     @pause = true if @alive_cell_history[-10..-1].uniq.length == 1
   end
 
   def tick
@@ -66,6 +66,20 @@ end
     self.alive_cell_history << self.alive_cell_count
     self.alive_cell_count = 0
     self.stable_state_check if @tick_count > 10
+  end
+
+  def reckoning
+    @pause = true
+
+    width_counter = 0
+    height_counter = 0
+
+    while width_counter < @width do
+      while height_counter < @height do
+        @age_at_death_history << board[width_counter][height_counter].age
+      end
+    end
+
   end
 
   def sort_age(data_set)
@@ -99,141 +113,72 @@ end
 
   def record_census
     census = self.formatted_census
-    CSV.open("cells.csv", "wb") do |csv|
+    CSV.open("public/data/cells.csv", "wb",
+      :write_headers => true,
+      :headers => ["age", "frequency"]) do |csv|
       census.to_a.each do |item|
         csv << item
       end
     end
   end
 
-  def randomize_live_cells(cell_count)
-    cell_count.times do
-      current_cell = board[rand(0...width)][rand(0...height)]
-      current_cell.alive = true
-      self.alive_cell_count += 1
+  def record_histogram
+    histogram = self.formatted_histogram
+    CSV.open("public/data/histogram.csv", "wb",
+      :write_headers => true,
+      :headers => ["age", "frequency"]) do |csv|
+      histogram.to_a.each do |item|
+        csv << item
+      end
     end
+  end
+
+  def create_cell(x, y)
+    board[x][y].alive = true
+    self.alive_cell_count += 1
+  end
+
+  def record_live_cells
     self.alive_cell_history << self.alive_cell_count
     self.alive_cell_count = 0
   end
 
+  def randomize_live_cells(cell_count)
+    cell_count.times do
+      create_cell(rand(0...width), rand(0...height))
+    end
+    record_live_cells
+  end
+
+  def make_formation(cell_locations)
+    cell_locations.each do |coordinates|
+      create_cell(coordinates[0], coordinates[1])
+    end
+    record_live_cells
+  end
+
   def create_blinker
-    board[10, 9].alive = true
-    board[10, 10].alive = true
-    board[10, 11].alive = true
+    make_formation([[10, 9],[10, 10],[10, 11]])
   end
 
   def create_pulsar
-    board[11][17].alive = true
-    board[10][18].alive = true
-    board[12][18].alive = true
-    board[10][19].alive = true
-    board[12][19].alive = true
-    board[11][20].alive = true
-    board[10][21].alive = true
-    board[12][21].alive = true
-    board[10][22].alive = true
-    board[12][22].alive = true
-    board[11][23].alive = true
-
-    board[11][17].age = 1
-    board[10][18].age = 1
-    board[12][18].age = 1
-    board[10][19].age = 1
-    board[12][19].age = 1
-    board[11][20].age = 1
-    board[10][21].age = 1
-    board[12][21].age = 1
-    board[10][22].age = 1
-    board[12][22].age = 1
-    board[11][23].age = 1
+    make_formation([[11,17],[10,18],[12,18],
+        [10,19],[12,19],[11,20],[10,21],
+        [12,21],[10,22],[12,22],[11,23]])
   end
 
   def create_glider_gun
-    #game = Game.new(28, 40)
-
-    board[5][1].alive = true
-    board[5][2].alive = true
-    board[6][1].alive = true
-    board[6][2].alive = true
-
-    board[5][1].age = 1
-    board[5][2].age = 1
-    board[6][1].age = 1
-    board[6][2].age = 1
+  #Left Block
+    make_formation([[5,1],[5,2],[6,1],[6,2]])
 
   # Right Block
-    board[3][35].alive = true
-    board[3][36].alive = true
-    board[4][35].alive = true
-    board[4][36].alive = true
-
-    board[3][35].age = 1
-    board[3][36].age = 1
-    board[4][35].age = 1
-    board[4][36].age = 1
+    make_formation([[3,35],[3,36],[4,35],[4,36]])
 
   # Columns 11-18
-    board[5][11].alive = true # 1
-    board[6][11].alive = true # 2
-    board[7][11].alive = true # 3
-    board[4][12].alive = true # 4
-    board[8][12].alive = true # 5
-    board[3][13].alive = true # 6
-    board[9][13].alive = true # 7
-    board[3][14].alive = true # 8
-    board[9][14].alive = true # 9
-    board[6][15].alive = true # 10
-    board[4][16].alive = true # 11
-    board[8][16].alive = true # 12
-    board[5][17].alive = true # 13
-    board[6][17].alive = true # 14
-    board[7][17].alive = true # 15
-    board[6][18].alive = true # 16
+    make_formation([[5,11],[6,11],[7,11],[4,12],[8,12],[3,13],[9,13],[3,14],[9,14],[6,15],[4,16],[8,16],[5,17],[6,17],[7,17],[6,18]])
 
-    board[5][11].age = 1 # 1
-    board[6][11].age = 1 # 2
-    board[7][11].age = 1 # 3
-    board[4][12].age = 1 # 4
-    board[8][12].age = 1 # 5
-    board[3][13].age = 1 # 6
-    board[9][13].age = 1 # 7
-    board[3][14].age = 1 # 8
-    board[9][14].age = 1 # 9
-    board[6][15].age = 1 # 10
-    board[4][16].age = 1 # 11
-    board[8][16].age = 1 # 12
-    board[5][17].age = 1 # 13
-    board[6][17].age = 1 # 14
-    board[7][17].age = 1 # 15
-    board[6][18].age = 1 # 16
-
-    # Columns 21-25
-    board[3][21].alive = true # 1
-    board[4][21].alive = true # 2
-    board[5][21].alive = true # 3
-    board[3][22].alive = true # 4
-    board[4][22].alive = true # 5
-    board[5][22].alive = true # 6
-    board[2][23].alive = true # 7
-    board[6][23].alive = true # 8
-    board[1][25].alive = true # 9
-    board[2][25].alive = true # 10
-    board[6][25].alive = true # 11
-    board[7][25].alive = true # 12
-
-    board[3][21].age = 1 # 1
-    board[4][21].age = 1 # 2
-    board[5][21].age = 1 # 3
-    board[3][22].age = 1 # 4
-
-    board[4][22].age = 1 # 5
-    board[5][22].age = 1 # 6
-    board[2][23].age = 1 # 7
-    board[6][23].age = 1 # 8
-    board[1][25].age = 1 # 9
-    board[2][25].age = 1 # 10
-    board[6][25].age = 1 # 11
-    board[7][25].age = 1 # 12
+  # Columns 21-25
+    make_formation([[3,21],[4,21],[5,21],[3,22],[4,22],[5,22],[2,23],[6,23],[1,25],[2,25],[6,25],[7,25]])
   end
 
   end
