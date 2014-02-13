@@ -73,10 +73,14 @@ end
 
     width_counter = 0
     height_counter = 0
+    @cell_age_census = []
 
     while width_counter < @width do
       while height_counter < @height do
-        @age_at_death_history << board[width_counter][height_counter].age unless board[width_counter][height_counter].age == 0
+        unless board[width_counter][height_counter].age == 0
+         board[width_counter][height_counter].record_age
+         @age_at_death_history << board[width_counter][height_counter].age
+         end 
         height_counter += 1
       end
       height_counter = 0
