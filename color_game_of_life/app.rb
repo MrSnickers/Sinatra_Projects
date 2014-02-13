@@ -72,19 +72,19 @@ module Life
   get '/show' do
     @row_counter = 0
     @local_game = @@game
+    @local_game.export_census
+    @local_game.export_histogram
     @local_game.scan_all_cells
     @local_game.tick
-    @local_game.record_census
-    @local_game.record_histogram
-    @census = @@game.formatted_census
-    @ages = @@game.formatted_histogram
     haml :show
   end
 
   get '/reckoning' do
-    @@game.reckoning
     @row_counter = 0
     @local_game = @@game
+    @local_game.reckoning
+    @local_game.export_census
+    @local_game.export_histogram
     haml :show
   end
 

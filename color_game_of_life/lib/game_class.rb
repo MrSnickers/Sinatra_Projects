@@ -76,8 +76,11 @@ end
 
     while width_counter < @width do
       while height_counter < @height do
-        @age_at_death_history << board[width_counter][height_counter].age
+        @age_at_death_history << board[width_counter][height_counter].age unless board[width_counter][height_counter].age == 0
+        height_counter += 1
       end
+      height_counter = 0
+      width_counter +=1
     end
 
   end
@@ -111,7 +114,7 @@ end
     format_data(@cell_age_census)
   end
 
-  def record_census
+  def export_census
     census = self.formatted_census
     CSV.open("public/data/cells.csv", "wb",
       :write_headers => true,
@@ -122,7 +125,7 @@ end
     end
   end
 
-  def record_histogram
+  def export_histogram
     histogram = self.formatted_histogram
     CSV.open("public/data/histogram.csv", "wb",
       :write_headers => true,
@@ -135,6 +138,7 @@ end
 
   def create_cell(x, y)
     board[x][y].alive = true
+    board[x][y].age = 1
     self.alive_cell_count += 1
   end
 

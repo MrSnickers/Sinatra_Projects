@@ -56,9 +56,15 @@ h1 {
 }
 .census{
   position: absolute;
-  width: 250px;
+  width: 100px;
   top: 0px;
-  left: 0;
+  left: 0px;
+}
+.histogram{
+  position: absolute;
+  width: 100px;
+  top: 0px;
+  left: 110px;
 }
 .ending_status{
   position: absolute;
