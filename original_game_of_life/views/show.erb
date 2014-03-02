@@ -1,14 +1,14 @@
 <head>
-      <meta  <%= "http-equiv='refresh' content='0.8'" unless @local_game.pause %> >
+  <meta  <%= "http-equiv='refresh' content='0.8'" unless @local_game.pause %> >
 </head>
 
-<h1>Generation <%= @local_game.tick_count %> </h1>
+<h1>Generation <%= @local_game.tick_count %></h1> <a class="<%="hidden" unless @local_game.pause %> again" href = "/new">Play Again?</a>
 
 <div id="board_container">
   <% while @row_counter < @local_game.width %>
   <div id="row_container">
     <%@local_game.board[@row_counter].each do |cell|%>
-       <div class="cell" style="background: rgb(<%= cell.red%>, <%=cell.green%>, <%=cell.blue%>);"></div>
+       <div class="cell <%=cell.alive ? "alive" : "dead"%>"></div>
     <%end%>
   </div>
   <%@row_counter += 1%>

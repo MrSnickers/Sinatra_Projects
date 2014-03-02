@@ -38,23 +38,23 @@ end
   end
 
   def create_blinker
-    board[10, 9].alive = true
-    board[10, 10].alive = true
-    board[10, 11].alive = true
+    board[10][9].alive = true
+    board[10][10].alive = true
+    board[10][11].alive = true
   end
 
   def create_pulsar
-    board[10][7].alive = true
-    board[9][8].alive = true
-    board[11][8].alive = true
-    board[9][9].alive = true
-    board[11][9].alive = true
-    board[10][10].alive = true
-    board[9][11].alive = true
-    board[11][11].alive = true
-    board[9][12].alive = true
-    board[11][12].alive = true
-    board[10][13].alive = true
+    board[7][7].alive = true
+    board[6][8].alive = true
+    board[8][8].alive = true
+    board[6][9].alive = true
+    board[8][9].alive = true
+    board[7][10].alive = true
+    board[6][11].alive = true
+    board[8][11].alive = true
+    board[6][12].alive = true
+    board[8][12].alive = true
+    board[7][13].alive = true
   end
 
   def scan_all_cells
