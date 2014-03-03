@@ -1,4 +1,4 @@
-var width = 100
+var width = 180
     barHeight = 20
 
 var linearScale = d3.scale.linear()
@@ -13,18 +13,29 @@ linearScale.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
   chart2.attr("height", barHeight * data.length);
 
+  var barOffset = function(d){return width - (linearScale(d.frequency)+20);};
+
+  var textOffset = function(d){if (barOffset(d) > 0){return barOffset(d);}else{return 0;}};
+
   var bar = chart2.selectAll("g")
       .data(data)
     .enter().append("g")
       .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
 
   bar.append("rect")
+      .attr("x", barOffset)
       .attr("width", function(d) { return linearScale(d.frequency); })
       .attr("height", barHeight - 1)
       .attr("fill", "white");
 
   bar.append("text")
-      .attr("x", function(d) { return linearScale(d.frequency); })
+      .attr("x", textOffset)
+      .attr("y", (barHeight / 2)+5)
+      .attr("fill", "black")
+      .text(function(d){return d.frequency;});
+
+  bar.append("text")
+      .attr("x", function(){return width-15;})
       .attr("y", barHeight / 2)
       .attr("dy", ".35em")
       .attr("fill", "teal")

@@ -1,6 +1,6 @@
 %head
   -unless @local_game.pause
-    %meta{:http=>{:equiv=>'refresh'}, :content=>'0.6'}
+    %meta{:http=>{:equiv=>'refresh'}, :content=>'1'}
 %body
   .board_container
     -while @row_counter < @local_game.width
@@ -8,6 +8,13 @@
         -@local_game.board[@row_counter].each do |cell|
           .cell{:style=>"background-color: rgb(#{cell.red}, #{cell.green}, #{cell.blue});"}
         -@row_counter += 1
+
+    .census
+      %script{:src=>"http://d3js.org/d3.v3.min.js", :charset=>"utf-8"}
+      %script{:type=>"text/javascript", :src=>"js/census.js"}
+
+    .histogram
+      %script{:type=>"text/javascript", :src=>"js/histogram.js"}
 
     .ending_status
       - if @local_game.pause
@@ -17,10 +24,4 @@
         %h1.generation_counter Generation: #{@local_game.tick_count}
         %a.back{:href=>'/reckoning'}Reckoning
 
-    .census
-      %script{:src=>"http://d3js.org/d3.v3.min.js", :charset=>"utf-8"}
-      %script{:type=>"text/javascript", :src=>"js/census.js"}
 
-    .histogram
-
-      %script{:type=>"text/javascript", :src=>"js/histogram.js"}
