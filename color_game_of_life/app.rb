@@ -15,6 +15,9 @@ module Life
 
   get '/new' do
     @@game = Game.new(22, 37)
+    @local_game = @@game
+    @local_game.export_census
+    @local_game.export_histogram
     haml :new
   end
 
