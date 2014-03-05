@@ -2,7 +2,11 @@
   <meta  <%= "http-equiv='refresh' content='0.8'" unless @local_game.pause %> >
 </head>
 
-<h1>Generation <%= @local_game.tick_count %></h1> <a class="<%="hidden" unless @local_game.pause %> again" href = "/new">Play Again?</a>
+<div class="generation_counter">
+  <h1>Generation <%= @local_game.tick_count %></h1>
+  <br/>
+  <a class="back" href = "/new"><%= @local_game.pause ? "Play Again?": "Stop!"  %></a>
+</div>
 
 <div id="board_container">
   <% while @row_counter < @local_game.width %>
