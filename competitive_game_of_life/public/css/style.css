@@ -1,0 +1,115 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  color: white;
+  font-size: 30px;
+}
+
+.new{
+  font-size: 30px;
+}
+.form_container{
+  width: 100%;
+}
+.new_form{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.color0{
+  background: linear-gradient(135deg, rgba(80,248,50,1) 0%,rgba(111,241,92,1) 43%,rgba(41,246,12,1) 58%,rgba(47,240,23,1) 71%,rgba(56,231,39,1) 100%);
+}
+
+.color1{
+  background: linear-gradient(135deg, rgba(248,248,50,1) 0%,rgba(241,241,92,1) 43%,rgba(241,246,12,1) 58%,rgba(241,240,23,1) 71%,rgba(241,231,39,1) 100%);
+}
+
+#game_type{
+  font-size: 50px;
+}
+
+.box{
+  width: 15px;
+  display: inline-block;
+  position: relative;
+}
+
+.play{
+  color: white;
+  display: block;
+  margin:0 auto;
+  font-size: 30px;
+}
+.picker{
+  margin: 40px auto;
+  display: inline-block;
+}
+
+.generation_counter{
+
+}
+.board_container {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  min-width: 1400px;
+  width: 100%;
+}
+.row-container {
+  display: inline;
+  text-align: center 
+}
+
+}
+.ending_status{
+  position: absolute;
+  width: 250px;
+  bottom: 100px;
+  right: 0;
+}
+.cell {
+  display: inline-block;
+  border-radius: 40px;
+  margin: auto;
+  width: 30px;
+  height: 30px;
+}
+.back {
+  font-size: 20px;
+  padding: 14px 20px;
+  background: #4479BA;
+  color: #FFF;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: solid 1px #20538D;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+.back:hover {
+  background: #356094;
+  border: solid 1px #2A4E77;
+  text-decoration: none;
+}
+.back:active {
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  background: #2E5481;
+  border: solid 1px #203E5F;
+}
+
+
+/*background: linear-gradient(135deg, rgba(248,80,50,1) 0%,rgba(241,111,92,1) 43%,rgba(246,41,12,1) 58%,rgba(240,47,23,1) 71%,rgba(231,56,39,1) 100%)*/

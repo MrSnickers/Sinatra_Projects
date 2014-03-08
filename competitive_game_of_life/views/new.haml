@@ -1,0 +1,9 @@
+.form_container
+  .new_form
+    %form{:action=>"/create", :method=>"POST"}
+      %label{:class=>"new", :for=>"game_type"}Select your cell configuration:
+      %select{:id=>"game_type", :type=>"select", :name=>"game_type"}
+        %option{:value=>"random"}populate randomly
+        %option{:value=>"free_hand", :selected => true}choose your own cells
+        <br/>
+      %button{:class=>"back", :type=>"submit", :value=>"Submit"}Go!

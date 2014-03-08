@@ -1,0 +1,20 @@
+%head
+  -unless @local_game.pause
+    %meta{:http=>{:equiv=>'refresh'}, :content=>'1'}
+%body
+  .board_container
+    -while @row_counter < @local_game.width
+      .row_container
+        -@local_game.board[@row_counter].each do |cell|
+          .cell{:class=>"color#{cell.current_ownership}"}
+        -@row_counter += 1
+
+    .ending_status
+      - if @local_game.pause
+        %h1.generation_counter It's all over after #{@local_game.tick_count} generations.
+        %a.back{:href=>'/new'} Back
+      - else
+        %h1.generation_counter Generation: #{@local_game.tick_count}
+        %a.back{:href=>'/reckoning'}Reckoning
+
+
