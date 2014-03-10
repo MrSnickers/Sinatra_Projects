@@ -54,12 +54,12 @@ class Cell
   end
 
   def decide_ownership
-    if user1_neighbors > user2_neighbors
-      @future_ownership = 1
-    elsif user1_neighbors < user2_neighbors
-      @future_ownership = 2
-    else
+    if user0_neighbors > user1_neighbors
       @future_ownership = 0
+    elsif user0_neighbors < user1_neighbors
+      @future_ownership = 1
+    else
+      @future_ownership = nil
     end
   end
 
