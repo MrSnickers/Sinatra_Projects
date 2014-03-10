@@ -45,12 +45,12 @@ class Cell
     live_neighbor_array.length
   end
 
-  def user1_neighbors
-    @neighbors.select {|cell| cell.current_ownership == 1}.length
+  def user0_neighbors
+    @neighbors.select {|cell| cell.current_ownership == 0}.length
   end
 
-  def user2_neighbors
-    @neighbors.select {|cell| cell.current_ownership == 2}.length
+  def user1_neighbors
+    @neighbors.select {|cell| cell.current_ownership == 1}.length
   end
 
   def decide_ownership
